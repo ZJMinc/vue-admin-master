@@ -4,8 +4,8 @@ import Home from './views/Home.vue'
 import Main from './views/Main.vue'
 import Order from './views/nav1/Order.vue'
 import Path from './views/nav1/Path.vue'
-import Cost from './views/nav1/Cost.vue'
-import Page4 from './views/nav2/Page4.vue'
+import Plan from './views/nav1/Plan.vue'
+import User from './views/nav2/User.vue'
 import Page5 from './views/nav2/Page5.vue'
 import Cars from './views/nav3/Cars.vue'
 import echarts from './views/charts/echarts.vue'
@@ -37,23 +37,22 @@ let routes = [
     {
         path: '/',
         component: Home,
+        iconCls: 'fa fa-id-card-o',
+        leaf: true,//只有一个节点
+        children: [
+            { path: '/user', component: User, name: '人员管理' }
+        ]
+    },
+    {
+        path: '/',
+        component: Home,
         name: '订单配送管理',
         iconCls: 'el-icon-message',//图标样式class
         children: [
             { path: '/main', component: Main, name: '主页', hidden: true },
             { path: '/order', component: Order, name: '配送管理' },
             { path: '/path', component: Path, name: '配送路径' },
-            { path: '/cost', component: Cost, name: '成本展示' },
-        ]
-    },
-    {
-        path: '/',
-        component: Home,
-        name: '导航二',
-        iconCls: 'fa fa-id-card-o',
-        children: [
-            { path: '/page4', component: Page4, name: '页面4' },
-            { path: '/page5', component: Page5, name: '页面5' }
+            { path: '/plan', component: Plan, name: '配送计划' },
         ]
     },
     {

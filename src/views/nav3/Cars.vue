@@ -113,11 +113,11 @@
 				filterInput:"",
 				//新增界面数据
 				addcar:{
-					type: '',
-					numPlate: '',
-					maxMileage: '',
-					maxSpeed: '',
-					load: ''
+					addtype: '',
+					addnumPlate: '',
+					addmaxMileage: '',
+					addmaxSpeed: '',
+					addload: ''
 				},
 				//编辑界面数据
 				car:{
@@ -156,7 +156,7 @@
 				this.addFormVisible = true
 			},
 			addCar(e){
-				if(!this.car.type ||!this.car.numPlate ||!this.car.maxMileage ||!this.car.maxSpeed ||!this.car.load){
+				if(!this.addcar.type ||!this.addcar.numPlate ||!this.addcar.maxMileage ||!this.addcar.maxSpeed ||!this.addcar.load){
 					this.$notify({
 						title: '消息提示',
 						message: '请填写完整信息',
@@ -164,11 +164,11 @@
 					});
 				}else{
 					let newCar = {
-						type: this.car.type,
-						numPlate: this.car.numPlate,
-						maxMileage: this.car.maxMileage,
-						maxSpeed: this.car.maxSpeed,
-						load: this.car.load
+						type: this.addcar.type,
+						numPlate: this.addcar.numPlate,
+						maxMileage: this.addcar.maxMileage,
+						maxSpeed: this.addcar.maxSpeed,
+						load: this.addcar.load
 					}
 					this.$http.post("http://localhost:3000/cars",newCar).then(function (response) {
 					})
