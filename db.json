@@ -1,0 +1,98 @@
+{
+  "users": [
+    {
+      "name": "小张",
+      "age": "22",
+      "uid": "172040107133",
+      "car": "苏E12345",
+      "phone": "18112700004",
+      "idCard": "331021199800000002",
+      "id": 1
+    },
+    {
+      "name": "小王",
+      "age": "22",
+      "uid": "172040107133",
+      "car": "苏E12345",
+      "phone": "18112700001",
+      "idCard": "331021199800000001",
+      "id": 2
+    },
+    {
+      "name": "小赵",
+      "age": "22",
+      "uid": "172040107133",
+      "car": "苏E12345",
+      "phone": "18112700000",
+      "idCard": "331021199800000000",
+      "id": 3
+    }
+  ],
+  "cars": [
+    {
+      "type": "大",
+      "numPlate": "苏E12345",
+      "maxMileage": "200",
+      "maxSpeed": "200",
+      "load": "4",
+      "id": 1
+    },
+    {
+      "type": "大",
+      "numPlate": "苏E12346",
+      "maxMileage": "190",
+      "maxSpeed": "200",
+      "load": "5",
+      "id": 2
+    },
+    {
+      "type": "大",
+      "numPlate": "苏E12347",
+      "maxMileage": "180",
+      "maxSpeed": "200",
+      "load": "6",
+      "id": 3
+    },
+    {
+      "type": "小",
+      "numPlate": "苏E12348",
+      "maxMileage": "210",
+      "maxSpeed": "200",
+      "load": "4",
+      "id": 4
+    },
+    {
+      "type": "大",
+      "numPlate": "苏E12346",
+      "maxMileage": "190",
+      "maxSpeed": "200",
+      "load": "6",
+      "id": 6
+    },
+    {
+      "type": "大",
+      "numPlate": "3",
+      "maxMileage": "4",
+      "maxSpeed": "5",
+      "load": "6",
+      "id": 7
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
