@@ -14,7 +14,6 @@
                 <div id="chartPie" style="width:100%; height:400px;"></div>
             </el-col>
             <el-col :span="24">
-                <a href="http://echarts.baidu.com/examples.html" target="_blank" style="float: right;">more>></a>
             </el-col>
         </el-row>
     </section>
@@ -37,16 +36,16 @@
             drawColumnChart() {
                 this.chartColumn = echarts.init(document.getElementById('chartColumn'));
                 this.chartColumn.setOption({
-                  title: { text: 'Column Chart' },
+                  title: { text: '各区域快递配送总量（截至目前）' },
                   tooltip: {},
                   xAxis: {
-                      data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+                      data: ["新北区", "戚墅堰区", "金坛区", "武进区", "溧阳市", "钟楼区"]
                   },
                   yAxis: {},
                   series: [{
                       name: '销量',
                       type: 'bar',
-                      data: [5, 20, 36, 10, 10, 20]
+                      data: [10890, 9580, 7520, 19800, 9550, 10920]
                     }]
                 });
             },
@@ -54,8 +53,8 @@
                 this.chartBar = echarts.init(document.getElementById('chartBar'));
                 this.chartBar.setOption({
                     title: {
-                        text: 'Bar Chart',
-                        subtext: '数据来自网络'
+                        text: '业务量往年对比',
+                        // subtext: '数据来自网络'
                     },
                     tooltip: {
                         trigger: 'axis',
@@ -64,7 +63,7 @@
                         }
                     },
                     legend: {
-                        data: ['2011年', '2012年']
+                        data: ['2019年', '2020年']
                     },
                     grid: {
                         left: '3%',
@@ -78,18 +77,18 @@
                     },
                     yAxis: {
                         type: 'category',
-                        data: ['巴西', '印尼', '美国', '印度', '中国', '世界人口(万)']
+                        data: ['一月', '二月', '三月', '四月', '五月']
                     },
                     series: [
                         {
-                            name: '2011年',
+                            name: '2019年',
                             type: 'bar',
-                            data: [18203, 23489, 29034, 104970, 131744, 630230]
+                            data: [32000, 21005, 45000, 43103, 39141]
                         },
                         {
-                            name: '2012年',
+                            name: '2020年',
                             type: 'bar',
-                            data: [19325, 23438, 31000, 121594, 134141, 681807]
+                            data: [12314, 12415, 49014, 52134, 47213]
                         }
                     ]
                 });
@@ -98,13 +97,13 @@
                 this.chartLine = echarts.init(document.getElementById('chartLine'));
                 this.chartLine.setOption({
                     title: {
-                        text: 'Line Chart'
+                        text: '一周货物配送量'
                     },
                     tooltip: {
                         trigger: 'axis'
                     },
                     legend: {
-                        data: ['邮件营销', '联盟广告', '搜索引擎']
+                        data: ['衣物器具类', '食品类', '邮件类']
                     },
                     grid: {
                         left: '3%',
@@ -122,22 +121,22 @@
                     },
                     series: [
                         {
-                            name: '邮件营销',
+                            name: '衣物器具类',
                             type: 'line',
                             stack: '总量',
-                            data: [120, 132, 101, 134, 90, 230, 210]
+                            data: [820, 932, 901, 934, 1290, 1330, 1320]
                         },
                         {
-                            name: '联盟广告',
+                            name: '食品类',
                             type: 'line',
                             stack: '总量',
                             data: [220, 182, 191, 234, 290, 330, 310]
                         },
                         {
-                            name: '搜索引擎',
+                            name: '邮件类',
                             type: 'line',
                             stack: '总量',
-                            data: [820, 932, 901, 934, 1290, 1330, 1320]
+                            data: [120, 132, 101, 134, 90, 230, 210]
                         }
                     ]
                 });
@@ -146,8 +145,8 @@
                 this.chartPie = echarts.init(document.getElementById('chartPie'));
                 this.chartPie.setOption({
                     title: {
-                        text: 'Pie Chart',
-                        subtext: '纯属虚构',
+                        text: '物流配送成本',
+
                         x: 'center'
                     },
                     tooltip: {
@@ -157,7 +156,7 @@
                     legend: {
                         orient: 'vertical',
                         left: 'left',
-                        data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+                        data: ['仓储成本', '装卸与搬运成本', '包装成本', '流通加工成本', '运输成本']
                     },
                     series: [
                         {
@@ -166,11 +165,11 @@
                             radius: '55%',
                             center: ['50%', '60%'],
                             data: [
-                                { value: 335, name: '直接访问' },
-                                { value: 310, name: '邮件营销' },
-                                { value: 234, name: '联盟广告' },
-                                { value: 135, name: '视频广告' },
-                                { value: 1548, name: '搜索引擎' }
+                                { value: 335, name: '仓储成本' },
+                                { value: 310, name: '装卸与搬运成本' },
+                                { value: 234, name: '包装成本' },
+                                { value: 135, name: '流通加工成本' },
+                                { value: 1548, name: '运输成本' }
                             ],
                             itemStyle: {
                                 emphasis: {

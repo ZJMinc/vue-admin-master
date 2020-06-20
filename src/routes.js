@@ -8,7 +8,9 @@ import Plan from './views/nav1/Plan.vue'
 import User from './views/nav2/User.vue'
 import Page5 from './views/nav2/Page5.vue'
 import Cars from './views/nav3/Cars.vue'
+import Setting from "./views/nav4/Setting"
 import echarts from './views/charts/echarts.vue'
+import Safesetting from "./views/nav4/Safesetting";
 
 let routes = [
     {
@@ -58,10 +60,21 @@ let routes = [
     {
         path: '/',
         component: Home,
-        name: 'Charts',
+        name: '成本分析',
         iconCls: 'fa fa-bar-chart',
         children: [
-            { path: '/echarts', component: echarts, name: 'echarts' }
+            { path: '/echarts', component: echarts, name: '成本分析' }
+        ]
+    },
+    {
+        path: '/',
+        component: Home,
+        name: '系统设置',
+        iconCls: 'el-icon-setting',
+        children: [
+            { path: '/main', component: Main, name: '主页', hidden: true },
+            { path: '/setting', component: Setting, name: '基本设置' },
+            { path: '/safesetting', component: Safesetting, name: '安全设置' },
         ]
     },
     {

@@ -75,7 +75,7 @@
 	export default {
 		data() {
 			return {
-				sysName:'物流规划管理系统',
+				sysName:'物流配送管理系统',
 				collapsed:false,
 				sysUserName: '',
 				sysUserAvatar: '',

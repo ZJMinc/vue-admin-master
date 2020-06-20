@@ -22,7 +22,7 @@
 			</el-table-column>
 			<el-table-column prop="type" label="类型" width="100" sortable>
 			</el-table-column>
-			<el-table-column prop="numPlate" label="车牌" width="100" sortable>
+			<el-table-column prop="numPlate" label="车牌" width="120" sortable>
 			</el-table-column>
 			<el-table-column prop="maxMileage" label="最大里程（KM）" width="180" sortable>
 			</el-table-column>
@@ -119,6 +119,7 @@
 					addmaxSpeed: '',
 					addload: ''
 				},
+				numPlate: [],
 				//编辑界面数据
 				car:{
 					type: '',
@@ -172,6 +173,11 @@
 					}
 					this.$http.post("http://localhost:3000/cars",newCar).then(function (response) {
 					})
+					let newNumPlate = {
+						numPlate: this.addcar.numPlate,
+					}
+					this.$http.post("http://localhost:3000/numPlates",newNumPlate).then(function (response) {
+					})
 					this.$notify({
 						title: '消息提示',
 						message: '添加成功',
@@ -220,6 +226,21 @@
 			},
 			//删除操作函数
 			deleteCar(id){
+				// var num;
+				//  //获取需要删除的车牌信息
+				// this.$http.get("http://localhost:3000/cars/"+id).then(function (response) {
+				// 	this.car = response.body;
+				// 	num = this.car.numPlate;
+				// 	alert("删除车牌为"+num+"的汽车");
+				// });
+				// this.$http.get("http:localhost:3000/numPlates?numPlate="+num).then(function (response) {
+				// 	//返回信息是数组
+				// 	let num1 = new Array();
+				// 	num1 = response.body;
+				// 	alert(num1)
+				// });
+
+				//删除该项信息
 				this.$http.delete("http://localhost:3000/cars/"+id).then(function () {
 					this.fetchCars();
 					this.getCarNum();

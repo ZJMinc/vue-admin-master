@@ -9,9 +9,6 @@
         <el-form-item>
           <el-button type="primary" @click="showAddForm">新增</el-button>
         </el-form-item>
-        <el-form-item>
-<!--          当前员工数量为:{{userNum}}-->
-        </el-form-item>
       </el-form>
     </el-col>
     <!--列表-->
@@ -27,6 +24,8 @@
       <el-table-column prop="uid" label="工号" width="180" sortable>
       </el-table-column>
       <el-table-column prop="car" label="使用车辆" width="180" sortable>
+      </el-table-column>
+      <el-table-column prop="area" label="配送区域" width="180" sortable>
       </el-table-column>
       <el-table-column prop="phone" label="手机号" min-width="180" sortable>
       </el-table-column>
@@ -54,9 +53,14 @@
         </el-form-item>
         <el-form-item label="使用车辆" :label-width="formLabelWidth">
           <el-select v-model="adduser.car" placeholder="请选择使用车辆">
-            <el-option label="苏E12345" value="苏E12345"></el-option>
-            <el-option label="苏E12345" value="苏E12345"></el-option>
-            <el-option label="苏E12345" value="苏E12345"></el-option>
+<!--            <el-option v-for="item in numPlate" label= value=></el-option>-->
+            <el-option v-for="(item,index) in numPlates" :key="index" :value="item.numPlate"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="配送区域" :label-width="formLabelWidth">
+          <el-select v-model="user.area" placeholder="请选择配送区域">
+            <!--            <el-option v-for="item in numPlate" label= value=></el-option>-->
+            <el-option v-for="(item,index) in areas" :key="index" :value="item.area"></el-option>
           </el-select>
         </el-form-item>
 
@@ -87,12 +91,16 @@
         </el-form-item>
         <el-form-item label="使用车辆" :label-width="formLabelWidth">
           <el-select v-model="user.car" placeholder="请选择使用车辆">
-            <el-option label="苏E12345" value="苏E12345"></el-option>
-            <el-option label="苏E12345" value="苏E12345"></el-option>
-            <el-option label="苏E12345" value="苏E12345"></el-option>
+            <!--            <el-option v-for="item in numPlate" label= value=></el-option>-->
+            <el-option v-for="(item,index) in numPlates" :key="index" :value="item.numPlate"></el-option>
           </el-select>
         </el-form-item>
-
+        <el-form-item label="配送区域" :label-width="formLabelWidth">
+          <el-select v-model="user.area" placeholder="请选择配送区域">
+            <!--            <el-option v-for="item in numPlate" label= value=></el-option>-->
+            <el-option v-for="(item,index) in areas" :key="index" :value="item.area"></el-option>
+          </el-select>
+        </el-form-item>
         <el-form-item label="手机号" :label-width="formLabelWidth">
           <el-input v-model="user.phone" autocomplete="off"></el-input>
         </el-form-item>
@@ -113,6 +121,11 @@
   export default {
     data(){
       return{
+        //获取车牌信息
+        numPlates:[],
+        //获取地区信息
+        areas:[],
+
         // userNum:'',
         filterInput:"",
         //新增界面数据
@@ -121,6 +134,7 @@
           addage: '',
           adduid: '',
           addcar: '',
+          addarea: '',
           addphone: '',
           addidCard: ''
         },
@@ -130,6 +144,7 @@
           age: '',
           uid: '',
           car: '',
+          area: '',
           phone: '',
           idCard: ''
         },
@@ -140,12 +155,18 @@
       }
     },
     methods: {
-      // getUserNum(){
-      //   this.$http.get("http://localhost:3000/users").then(function (response) {
-      //     console.log(response);
-      //     this.carNum = response.body.length;
-      //   })
-      // },
+      //获取所有车牌号
+      getNumPlates(){
+        this.$http.get("http://localhost:3000/numPlates").then(function (response) {
+          this.numPlates = response.body;
+        })
+      },
+      //获取所有地区信息
+      getAreas(){
+        this.$http.get("http://localhost:3000/areas").then(function (response) {
+          this.areas = response.body;
+        })
+      },
       filterBy(users,value){
         return users.filter(function (user) {
           return user.uid.match(value);
@@ -162,7 +183,7 @@
         this.addFormVisible = true
       },
       addUser(e){
-        if(!this.adduser.name ||!this.adduser.age ||!this.adduser.uid ||!this.adduser.car ||!this.adduser.phone ||!this.adduser.idCard ){
+        if(!this.adduser.name ||!this.adduser.age ||!this.adduser.uid ||!this.adduser.car ||!this.adduser.area ||!this.adduser.phone ||!this.adduser.idCard ){
           this.$notify({
             title: '消息提示',
             message: '请填写完整信息',
@@ -174,6 +195,7 @@
             age: this.adduser.age,
             uid: this.adduser.uid,
             car: this.adduser.car,
+            area: this.adduser.area,
             phone: this.adduser.phone,
             idCard: this.adduser.idCard,
           }
@@ -200,7 +222,7 @@
         });
       },
       updateUser(id){
-        if(!this.user.name ||!this.user.age ||!this.user.uid ||!this.user.car ||!this.user.phone ||!this.user.idCard ){
+        if(!this.user.name ||!this.user.age ||!this.user.uid ||!this.user.car ||!this.user.area ||!this.user.phone ||!this.user.idCard ){
           this.$notify({
             title: '消息提示',
             message: '请填写完整信息',
@@ -212,6 +234,7 @@
             age: this.user.age,
             uid: this.user.uid,
             car: this.user.car,
+            area: this.user.area,
             phone: this.user.phone,
             idCard: this.user.idCard
           }
@@ -241,6 +264,8 @@
     },
     created(){
       this.fetchUsers();
+      this.getNumPlates();
+      this.getAreas();
       // this.getUserNum();
     }
   }
